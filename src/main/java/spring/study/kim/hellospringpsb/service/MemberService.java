@@ -8,11 +8,12 @@ import spring.study.kim.hellospringpsb.repository.MemberRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class MemberService {
-    private final MemberRepository memberRepository;
 
-    @Autowired
+public class MemberService {
+
+     private final MemberRepository memberRepository;
+
+
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
