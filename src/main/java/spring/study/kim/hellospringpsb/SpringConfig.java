@@ -26,5 +26,6 @@ public class SpringConfig {
     @Bean
     public JdbcMemberRepository memoryMemberRepository() {
         return new JdbcMemberRepository(dataSource);
+        //return new JdbcTemplateMemberRepository(dataSource);
     }
 }

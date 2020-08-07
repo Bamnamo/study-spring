@@ -1,6 +1,6 @@
 package spring.study.kim.hellospringpsb.service;
 
-import org.junit.jupiter.api.AfterEach;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,43 +23,32 @@ public class MemberServiceIntegrationTest {
 
 
     @Test
-    void 회원가입() {
-        //given
+    public void 회원가입() throws Exception {
+        //Given
         Member member = new Member();
-        member.setName("spring");
-
-        //when
+        member.setName("hello");
+        //When
         Long saveId = memberService.join(member);
-
-        //then
-        Member findMember = memberService.findOne(saveId).get();
-        assertThat(member.getName()).isEqualTo(findMember.getName());
+        //Then
+        Member findMember = memberRepository.findById(saveId).get();
+        assertEquals(member.getName(), findMember.getName());
     }
 
     @Test
-    public void 중복_회원_예외() {
-        //given
+    public void 중복_회원_예외() throws Exception {
+
+        //Given
         Member member1 = new Member();
         member1.setName("spring");
 
         Member member2 = new Member();
         member2.setName("spring");
 
-        //when
+        //When
         memberService.join(member1);
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        IllegalStateException e = assertThrows(IllegalStateException.class,
+                () -> memberService.join(member2));
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-
-        /*
-        try {
-            memberService.join(member2);
-            fail();
-        } catch (IllegalStateException e) {
-            assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
-        }
-         */
-
-        //then
     }
 
 }
