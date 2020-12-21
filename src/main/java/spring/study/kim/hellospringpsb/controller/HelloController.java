@@ -17,7 +17,8 @@ public class HelloController {
     @GetMapping("hello-mvc")
     public String helloMvc(@RequestParam("name") String name, Model model) {
         model.addAttribute("name", name);
-        return "hello-template"; }
+        return "hello-template";
+    }
 
     @GetMapping("hello-string")
     @ResponseBody
@@ -28,14 +29,21 @@ public class HelloController {
     @GetMapping("hello-api")
     @ResponseBody
     public Hello helloApi(@RequestParam("name") String name) {
-        Hello hello = new Hello(); hello.setName(name); return hello;
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
     }
+
     static class Hello {
         private String name;
+
         public String getName() {
             return name;
         }
-        public void setName(String name) { this.name = name;
-        } }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+    }
 
 }

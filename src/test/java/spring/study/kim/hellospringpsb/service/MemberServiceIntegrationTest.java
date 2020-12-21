@@ -23,7 +23,7 @@ public class MemberServiceIntegrationTest {
 
 
     @Test
-    public void 회원가입(){
+    public void 회원가입() {
         //Given
         Member member = new Member();
         member.setName("hello");
@@ -35,7 +35,7 @@ public class MemberServiceIntegrationTest {
     }
 
     @Test
-    public void 중복_회원_예외(){
+    public void 중복_회원_예외() {
 
         //Given
         Member member1 = new Member();

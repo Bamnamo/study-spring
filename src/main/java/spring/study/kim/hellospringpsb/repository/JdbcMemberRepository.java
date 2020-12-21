@@ -35,7 +35,7 @@ public class JdbcMemberRepository implements MemberRepository {
                 member.setId(rs.getLong(1));
             } else {
                 throw new SQLException("id 조회 실패");
-            } 
+            }
             return member;
         } catch (Exception e) {
             throw new IllegalStateException(e);
